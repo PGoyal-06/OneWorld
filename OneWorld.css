@@ -97,3 +97,32 @@ nav ul li a {
         height: 100%;
     }
 }
+
+/* --Testimonials */
+#testimonial{
+    width: 100%;
+    padding: 70px 0;
+}
+
+.testimonial-row{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.testimonial-col{
+    flex: 28%;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px 3px #00968814;
+    cursor: pointer;
+}
+
+.testimonial-col p{
+    font-size: 14px;
+    
+}
