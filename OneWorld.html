@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="OneWorld.css" />
 
 <head>
-    <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OneWorld</title>
 </head>
 
@@ -25,10 +25,10 @@
         </nav>
         <div class="content">
             <h1>OneWorld</h1>
-            <a href="#">Explore</a>
+            <a href="#" id="exploreBtn" onclick="showContent()">Explore</a>
         </div>
     </div>
-    <div style="background-color: antiquewhite; padding: 3%;">
+    <div id="contentContainer" style="background-color: antiquewhite; padding: 3%; display: none;">
         <center>
             <h1>What is Lack of Education?</h1>
         </center>
@@ -94,53 +94,136 @@
                 <h1 style="position: relative; bottom: 300px;">Statistical Information</h1>
             </center>
             <div>
-                <img src="./Images/Graph1.png" style="width: 350px; height: 400px; position: relative; bottom: 250px;">
-                <img src="./Images/Graph2.jpg" style="width: 350px; height: 400px; position: relative; bottom: 250px; left: 100px;">
-                <ul style="position: relative; bottom: 200px;">
+                <img src="./Images/Graph1.png" style="width: 350px; height: 400px; position: relative; bottom: 250px; right: 30px;">
+                <img src="./Images/Graph2.jpg" style="width: 350px; height: 400px; position: relative; bottom: 250px; left: 20px;">
+                <img src="./Images/Graph3.png" style="width: 420px; height: 400px; position: relative; bottom: 250px; left: 80px;">
+                <ul id="textList" style="position: relative; bottom: 200px; display: none;">
                     <li>
                         <p>
-                            Global illiteracy rates: According to UNESCO, as of 2021, approximately 773 million adults worldwide (aged 15 and above)
+                            Global illiteracy rates: According to UNESCO, as of 2021, approximately 773 million adults worldwide
+                            (aged 15 and above)
                             lack basic literacy skills, with two-thirds of them being women.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Out-of-school children: The number of out-of-school children varies over time and across regions. As of 2021, it was
-                            estimated that around 258 million children and youth were out of school. Sub-Saharan Africa and South Asia have the
+                            Out-of-school children: The number of out-of-school children varies over time and across regions. As of
+                            2021, it was
+                            estimated that around 258 million children and youth were out of school. Sub-Saharan Africa and South
+                            Asia have the
                             highest number of out-of-school children.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Gender disparities: Gender inequality in education remains a significant issue in many parts of the world. In some
-                            regions, girls are more likely to be denied access to education compared to boys. For example, in sub-Saharan Africa,
+                            Gender disparities: Gender inequality in education remains a significant issue in many parts of the
+                            world. In some
+                            regions, girls are more likely to be denied access to education compared to boys. For example, in
+                            sub-Saharan Africa,
                             around 9 million girls of primary school age will never attend school.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Primary school completion rates: According to the Global Education Monitoring Report, around 83% of children worldwide
-                            completed primary school in 2020. However, this still leaves a significant number of children without completing their
+                            Primary school completion rates: According to the Global Education Monitoring Report, around 83% of
+                            children worldwide
+                            completed primary school in 2020. However, this still leaves a significant number of children without
+                            completing their
                             primary education.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Disparities in secondary education: Secondary education enrollment rates vary across countries. In low-income countries,
-                            the gross enrollment rate in secondary education is around 45%, compared to 90% in high-income countries.
+                            Disparities in secondary education: Secondary education enrollment rates vary across countries. In
+                            low-income countries,
+                            the gross enrollment rate in secondary education is around 45%, compared to 90% in high-income
+                            countries.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Education and poverty: Lack of education is closely linked to poverty. It is estimated that each additional year of
-                            schooling can increase a person's earning potential by 10%. Education plays a vital role in breaking the cycle of
+                            Education and poverty: Lack of education is closely linked to poverty. It is estimated that each
+                            additional year of
+                            schooling can increase a person's earning potential by 10%. Education plays a vital role in breaking the
+                            cycle of
                             poverty and improving livelihoods.
                         </p>
                     </li>
                 </ul>
+                <button id="readMoreBtn" onclick="toggleVisibility()" onmouseover="buttonHover(this)"
+                    onmouseout="buttonUnhover(this)" style="position: relative; bottom: 120px; left: 520px;">Read more</button>
+                <button id="collapseBtn" onclick="collapseText()" onmouseover="buttonHover(this)" onmouseout="buttonUnhover(this)"
+                    style="display: none; position: relative; bottom: 120px; left: 520px;">Collapse</button>
             </div>
+            
+            <style>
+                #readMoreBtn,
+                #collapseBtn {
+                    background-color: #007bff;
+                    color: #fff;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 4px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    opacity: 1;
+                    transition: opacity 0.3s;
+                }
+            
+                #readMoreBtn:hover,
+                #collapseBtn:hover {
+                    background-color: #0056b3;
+                }
+            
+                #readMoreBtn.clicked,
+                #collapseBtn.clicked {
+                    opacity: 0.7;
+                }
+            </style>
+            
+            <script>
+                function toggleVisibility() {
+                    var textList = document.getElementById("textList");
+                    var readMoreBtn = document.getElementById("readMoreBtn");
+                    var collapseBtn = document.getElementById("collapseBtn");
+
+                    textList.style.display = "block";
+                    readMoreBtn.style.display = "none";
+                    collapseBtn.style.display = "inline-block";
+                    readMoreBtn.classList.add("clicked");
+                }
+
+                function collapseText() {
+                    var textList = document.getElementById("textList");
+                    var readMoreBtn = document.getElementById("readMoreBtn");
+                    var collapseBtn = document.getElementById("collapseBtn");
+
+                    textList.style.display = "none";
+                    readMoreBtn.style.display = "inline-block";
+                    collapseBtn.style.display = "none";
+                    readMoreBtn.classList.remove("clicked");
+                }
+
+                function buttonHover(button) {
+                    button.style.opacity = "0.8";
+                }
+
+                function buttonUnhover(button) {
+                    button.style.opacity = "1";
+                }
+            </script>
+
         </div>
     </div>
+    <script>
+        function showContent(){
+            var exploreBtn = document.getElementById("exploreBtn");
+            var contentContainer = document.getElementById("contentContainer");
+
+            exploreBtn.style.display = "none";
+            contentContainer.style.display = "block";
+        }
+    </script>
 </body>
 
 </html>
