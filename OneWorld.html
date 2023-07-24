@@ -1,635 +1,822 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OneWorld</title>
     <link rel="stylesheet" type="text/css" href="OneWorld.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
     <style>
-        .blog-section {
-            margin-top: 50px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between; 
-        }
-    
-        .blog-post {
-            width: calc(50% - 20px);
-            background-color: #f9f9f9;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-sizing: border-box;
-            transition: transform 0.3s;
-        }
-    
-        .blog-post:hover {
-            transform: translateY(-10px);
-        }
-    
-        .blog-post h3 {
-            color: #0066cc;
-            margin-bottom: 10px;
-        }
-    
-        .blog-post p {
-            margin-bottom: 10px;
-        }
-    
-        .blog-post a {
-            color: #007bff;
-            text-decoration: none;
-        }
-    
-        .blog-post a:hover {
-            text-decoration: underline;
-        }
-        
-        #footer {
+      .blog-section {
+        margin-top: 50px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .blog-post {
+        width: calc(50% - 20px);
         background-color: #f9f9f9;
         padding: 20px;
-        }
-            
-        .footer-row {
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        transition: transform 0.3s;
+      }
+
+      .blog-post:hover {
+        transform: translateY(-10px);
+      }
+
+      .blog-post h3 {
+        color: #0066cc;
+        margin-bottom: 10px;
+      }
+
+      .blog-post p {
+        margin-bottom: 10px;
+      }
+
+      .blog-post a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      .blog-post a:hover {
+        text-decoration: underline;
+      }
+
+      #footer {
+        background-color: #f9f9f9;
+        padding: 20px;
+      }
+
+      .footer-row {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
         gap: 20px;
-        }
-            
-        .footer-left p,
-        .footer-right p {
+      }
+
+      .footer-left p,
+      .footer-right p {
         margin: 10px 0;
-        }
-            
-        .contact-heading {
+      }
+
+      .contact-heading {
         color: #ff3366;
         margin-bottom: 10px;
-        }
-            
-        .title-text h2 {
+      }
+
+      .title-text h2 {
         color: #0066cc;
-        }
-            
-        .fas {
+      }
+
+      .fas {
         margin-right: 5px;
-        }
+      }
 
-        #readMoreBtn,
-#collapseBtn {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  opacity: 1;
-  transition: opacity 0.3s;
-}
+      #readMoreBtn,
+      #collapseBtn {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        opacity: 1;
+        transition: opacity 0.3s;
+      }
 
-#readMoreBtn:hover,
-#collapseBtn:hover {
-  background-color: #0056b3;
-}
+      #readMoreBtn:hover,
+      #collapseBtn:hover {
+        background-color: #0056b3;
+      }
 
-#readMoreBtn.clicked,
-#collapseBtn.clicked {
-  opacity: 0.7;
-}
+      #readMoreBtn.clicked,
+      #collapseBtn.clicked {
+        opacity: 0.7;
+      }
 
-#textList img {
-  width: 0;
-  height: 0;
-  opacity: 0;
-  transition: width 0.5s, height 0.5s, opacity 0.5s;
-}
+      #textList img {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        transition: width 0.5s, height 0.5s, opacity 0.5s;
+      }
 
-#textList p {
-  opacity: 0;
-  transform: translateX(20px);
-  transition: opacity 0.5s, transform 0.5s;
-}
+      #textList p {
+        opacity: 0;
+        transform: translateX(20px);
+        transition: opacity 0.5s, transform 0.5s;
+      }
 
-#textList.visible img {
-  width: 400px;
-  height: 400px;
-  opacity: 1;
-}
+      #textList.visible img {
+        width: 400px;
+        height: 400px;
+        opacity: 1;
+      }
 
-#textList.visible p {
-  opacity: 1;
-  transform: translateX(0);
-}
+      #textList.visible p {
+        opacity: 1;
+        transform: translateX(0);
+      }
 
-#textList img,
-#textList p {
-  opacity: 0;
-  transition: opacity 0.5s;
-}
+      #textList img,
+      #textList p {
+        opacity: 0;
+        transition: opacity 0.5s;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="hero">
-        <video autoplay loop muted playsinline class="back-video">
-            <source src="./Images/video.mp4" type="video/mp4">
-        </video>
-        <header>
+      <video autoplay loop muted playsinline class="back-video">
+        <source src="./Images/video.mp4" type="video/mp4" />
+      </video>
+      <header id="top">
         <nav>
-            <img src="./Images/logo-png.png" class="logo">
-            <ul style="position: fixed; left: 800px;">
-                <li><a href="#">Home</a></li>
-                <li><a href="#blogs">Blogs</a></li>
-                <li><a href="aboutus.html" id="aboutUsLink">About Us</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-            </ul>
+          <img src="./Images/logo-png.png" class="logo" />
+          <ul style="position: fixed; left: 835px;">
+            <li><a href="#top">Home</a></li>
+            <li><a href="#blogs">Blogs</a></li>
+            <li><a href="aboutus.html" id="aboutUsLink">About Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
         </nav>
-        </header>        
-        
-        <div class="content">
-            <h1>OneWorld</h1>
-            <a href="#" id="exploreBtn" onclick="showContent()">Explore</a>
-        </div>
+      </header>
+
+      <div class="content">
+        <h1>OneWorld</h1>
+        <a href="#" id="exploreBtn" onclick="showContent()">Explore</a>
+      </div>
     </div>
 
-    <div id="contentContainer" style="background-color: antiquewhite; padding: 3%; display: none;">
+    <div
+      id="contentContainer"
+      style="background-color: antiquewhite; padding: 3%; display: none"
+    >
+      <center>
+        <h1>What is Lack of Education?</h1>
+      </center>
+      <div>
+        <ul>
+          <li style="width: 50%">
+            <p>
+              Lack of education refers to a situation where individuals or
+              communities do not have access to or do not receive adequate
+              formal or informal learning opportunities.
+            </p>
+          </li>
+          <li style="width: 50%">
+            <p>
+              It is characterized by a limited or complete absence of schooling,
+              training, or instruction, leading to a lack of knowledge, skills,
+              and intellectual development.
+            </p>
+          </li>
+          <li style="width: 50%">
+            <p>
+              Lack of education can occur due to various factors such as
+              poverty, cultural barriers, social norms, gender inequality, armed
+              conflicts, and inadequate infrastructure.
+            </p>
+          </li>
+          <li style="width: 50%">
+            <p>
+              It can have detrimental effects on individuals and societies,
+              hindering personal development, economic growth, and social
+              progress.
+            </p>
+          </li>
+          <li style="width: 50%">
+            <p>
+              Individuals with limited education may face difficulties in
+              finding employment or achieving higher income levels, leading to a
+              perpetuation of poverty and socio-economic inequalities.
+            </p>
+          </li>
+          <li style="width: 50%">
+            <p>
+              Lack of education can contribute to the persistence of illiteracy,
+              preventing individuals from fully participating in civic
+              activities, making informed decisions, and exercising their
+              rights.
+            </p>
+          </li>
+          <li style="width: 50%">
+            <p>
+              It can impede access to healthcare and information, increasing
+              vulnerability to health issues, including preventable diseases.
+            </p>
+          </li>
+          <li style="width: 50%">
+            <p>
+              Lack of education can also limit critical thinking,
+              problem-solving abilities, and creativity, hindering innovation
+              and societal advancement.
+            </p>
+          </li>
+        </ul>
+        <video
+          src="./Images/Education.mp4"
+          type="video/mp4"
+          controls
+          style="
+            width: 600px;
+            height: 400px;
+            position: relative;
+            left: 650px;
+            bottom: 350px;
+          "
+        ></video>
+      </div>
+
+      <div>
         <center>
-            <h1>What is Lack of Education?</h1>
+          <h1 style="position: relative; bottom: 300px">
+            Statistical Information
+          </h1>
         </center>
         <div>
-        <ul>
-            <li style="width: 50%;">
-                <p>
-                    Lack of education refers to a situation where individuals or communities do not have access to or do not receive
-                    adequate formal or informal learning opportunities.
-                </p>
+          <img
+            src="./Images/Graph1.png"
+            style="
+              width: 350px;
+              height: 400px;
+              position: relative;
+              bottom: 250px;
+              right: 30px;
+            "
+          />
+          <img
+            src="./Images/Graph2.jpg"
+            style="
+              width: 350px;
+              height: 400px;
+              position: relative;
+              bottom: 250px;
+              left: 20px;
+            "
+          />
+          <img
+            src="./Images/Graph3.png"
+            style="
+              width: 420px;
+              height: 400px;
+              position: relative;
+              bottom: 250px;
+              left: 80px;
+            "
+          />
+          <ul
+            id="textList"
+            style="position: relative; bottom: 200px; display: none"
+          >
+            <li>
+              <p>
+                <b>Global illiteracy rates:</b> According to UNESCO, as of 2021,
+                approximately 773 million adults worldwide (aged 15 and above)
+                lack basic literacy skills, with two-thirds of them being women.
+              </p>
             </li>
-            <li style="width: 50%;">
-                <p>
-                    It is characterized by a limited or complete absence of schooling, training, or instruction, leading to a lack of
-                    knowledge, skills, and intellectual development.
-                </p>
+            <li>
+              <p>
+                <b>Out-of-school children:</b> The number of out-of-school
+                children varies over time and across regions. As of 2021, it was
+                estimated that around 258 million children and youth were out of
+                school. Sub-Saharan Africa and South Asia have the highest
+                number of out-of-school children.
+              </p>
             </li>
-            <li style="width: 50%;">
-                <p>
-                    Lack of education can occur due to various factors such as poverty, cultural barriers, social norms, gender inequality,
-                    armed conflicts, and inadequate infrastructure.
-                </p>
+            <li>
+              <p>
+                <b>Gender disparities:</b> Gender inequality in education
+                remains a significant issue in many parts of the world. In some
+                regions, girls are more likely to be denied access to education
+                compared to boys. For example, in sub-Saharan Africa, around 9
+                million girls of primary school age will never attend school.
+              </p>
             </li>
-            <li style="width: 50%;">
-                <p>
-                    It can have detrimental effects on individuals and societies, hindering personal development, economic growth, and
-                    social progress.
-                </p>
+            <li>
+              <p>
+                <b>Primary school completion rates:</b> According to the Global
+                Education Monitoring Report, around 83% of children worldwide
+                completed primary school in 2020. However, this still leaves a
+                significant number of children without completing their primary
+                education.
+              </p>
             </li>
-            <li style="width: 50%;">
-                <p>
-                    Individuals with limited education may face difficulties in finding employment or achieving higher income levels,
-                    leading to a perpetuation of poverty and socio-economic inequalities.
-                </p>
+            <li>
+              <p>
+                <b>Disparities in secondary education:</b> Secondary education
+                enrollment rates vary across countries. In low-income countries,
+                the gross enrollment rate in secondary education is around 45%,
+                compared to 90% in high-income countries.
+              </p>
             </li>
-            <li style="width: 50%;">
-                <p>
-                    Lack of education can contribute to the persistence of illiteracy, preventing individuals from fully participating in
-                    civic activities, making informed decisions, and exercising their rights.
-                </p>
+            <li>
+              <p>
+                <b>Education and poverty:</b> Lack of education is closely
+                linked to poverty. It is estimated that each additional year of
+                schooling can increase a person's earning potential by 10%.
+                Education plays a vital role in breaking the cycle of poverty
+                and improving livelihoods.
+              </p>
             </li>
-            <li style="width: 50%;">
-                <p>
-                    It can impede access to healthcare and information, increasing vulnerability to health issues, including preventable
-                    diseases.
-                </p>
-            </li>
-            <li style="width: 50%;">
-                <p>
-                    Lack of education can also limit critical thinking, problem-solving abilities, and creativity, hindering innovation and
-                    societal advancement.
-                </p>
-            </li>
-        </ul>
-        <video src="./Images/Education.mp4" type="video/mp4" controls style="width: 600px;
+            <img
+              src="./Images/literacy-rate-adults.png"
+              style="
+                width: 400px;
                 height: 400px;
-                position: relative;
-                left: 650px;
-                bottom: 350px;"></video>
+                float: left;
+                padding-top: 20px;
+              "
+            />
+            <p style="padding: 40px">
+              The map shows literacy rates around the world, using recent
+              estimates published in the CIA Factbook. As it can be seen, all
+              countries outside Africa (with the exception of Afghanistan) have
+              literacy rates above 50%. Despite progress in the long run,
+              however, large inequalities remain, notably between sub-Saharan
+              Africa and the rest of the world. In Burkina Faso, Niger and South
+              Sudan – the African countries at the bottom of the rank – literacy
+              rates are still below 30%.
+            </p>
+            <div style="clear: both"></div>
+          </ul>
+          <button
+            id="readMoreBtn"
+            onclick="toggleVisibility()"
+            onmouseover="buttonHover(this)"
+            onmouseout="buttonUnhover(this)"
+            style="position: relative; bottom: 120px; left: 500px"
+          >
+            Read more
+          </button>
+          <button
+            id="collapseBtn"
+            onclick="collapseText()"
+            onmouseover="buttonHover(this)"
+            onmouseout="buttonUnhover(this)"
+            style="
+              display: none;
+              position: relative;
+              bottom: 120px;
+              left: 520px;
+            "
+          >
+            Collapse
+          </button>
         </div>
-        
         <div>
+          <div>
             <center>
-                <h1 style="position: relative; bottom: 300px;">Statistical Information</h1>
+              <h2>
+                What is the most literate Country in the world and what has it
+                done to achieve this?
+              </h2>
             </center>
-            <div>
-                <img src="./Images/Graph1.png" style="width: 350px; height: 400px; position: relative; bottom: 250px; right: 30px;">
-                <img src="./Images/Graph2.jpg" style="width: 350px; height: 400px; position: relative; bottom: 250px; left: 20px;">
-                <img src="./Images/Graph3.png" style="width: 420px; height: 400px; position: relative; bottom: 250px; left: 80px;">
-                <ul id="textList" style="position: relative; bottom: 200px; display: none;">
-                    <li>
-                        <p>
-                            <b>Global illiteracy rates:</b> According to UNESCO, as of 2021, approximately 773 million adults worldwide
-                            (aged 15 and above)
-                            lack basic literacy skills, with two-thirds of them being women.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <b>Out-of-school children:</b> The number of out-of-school children varies over time and across regions. As of
-                            2021, it was
-                            estimated that around 258 million children and youth were out of school. Sub-Saharan Africa and South
-                            Asia have the
-                            highest number of out-of-school children.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <b>Gender disparities:</b> Gender inequality in education remains a significant issue in many parts of the
-                            world. In some
-                            regions, girls are more likely to be denied access to education compared to boys. For example, in
-                            sub-Saharan Africa,
-                            around 9 million girls of primary school age will never attend school.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <b>Primary school completion rates:</b> According to the Global Education Monitoring Report, around 83% of
-                            children worldwide
-                            completed primary school in 2020. However, this still leaves a significant number of children without
-                            completing their
-                            primary education.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <b>Disparities in secondary education:</b> Secondary education enrollment rates vary across countries. In
-                            low-income countries,
-                            the gross enrollment rate in secondary education is around 45%, compared to 90% in high-income
-                            countries.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <b>Education and poverty:</b> Lack of education is closely linked to poverty. It is estimated that each
-                            additional year of
-                            schooling can increase a person's earning potential by 10%. Education plays a vital role in breaking the
-                            cycle of
-                            poverty and improving livelihoods.
-                        </p>
-                    </li>
-                    <img src="./Images/literacy-rate-adults.png" style="width: 400px; height: 400px; float: left; padding-top: 20px;">
-                    <p style="padding: 40px;">
-                        The map shows literacy rates around the world, using recent estimates published in the CIA Factbook. As it
-                        can be seen, all countries outside Africa (with the exception of Afghanistan) have literacy rates above 50%.
-                        Despite progress in the long run, however, large inequalities remain, notably between sub-Saharan Africa and the rest of
-                        the world. In Burkina Faso, Niger and South Sudan – the African countries at the bottom of the rank – literacy rates are
-                        still below 30%.
-                    </p>
-                    <div style="clear: both;"></div>
-                </ul>
-                <button id="readMoreBtn" onclick="toggleVisibility()" onmouseover="buttonHover(this)"
-                    onmouseout="buttonUnhover(this)" style="position: relative; bottom: 120px; left: 500px;">Read more</button>
-                <button id="collapseBtn" onclick="collapseText()" onmouseover="buttonHover(this)" onmouseout="buttonUnhover(this)"
-                    style="display: none; position: relative; bottom: 120px; left: 520px;">Collapse</button>
-            </div>
-            <div>
+            <ul>
+              <li>
+                As of 2021, <b>Finland</b> is the most literate Country in the
+                world.
+              </li>
+              <p>
+                Finland has been recognized as having high literacy rates due to
+                several factors and initiatives that contribute to its strong
+                educational system. While there isn't a single formula for
+                success, here are some key factors that have contributed to
+                Finland's high literacy rates:
+              </p>
+              <p>
+                1. <b>Emphasis on Education:</b> Education is highly valued in
+                Finnish society, and there is a cultural emphasis on the
+                importance of learning and education from an early age.
+              </p>
+              <p>
+                2. <b>Comprehensive Education System:</b> Finland has a
+                well-developed and comprehensive education system that focuses
+                on providing equal opportunities for all students. It includes a
+                strong emphasis on early childhood education, followed by a
+                nine-year comprehensive basic education program and further
+                options for secondary education.
+              </p>
+              <p>
+                3. <b>High-Quality Teachers:</b> Finnish teachers undergo
+                rigorous training and are highly respected professionals. They
+                are required to have a master's degree in education, and the
+                teaching profession is highly competitive. This ensures that
+                high-quality educators are in the classrooms.
+              </p>
+              <p>
+                4. <b>Holistic Approach:</b> The Finnish education system takes
+                a holistic approach, focusing not just on academic achievement
+                but also on the overall well-being of students. There is an
+                emphasis on individualized learning, student welfare, and
+                promoting a positive school environment.
+              </p>
+              <p>
+                5. <b>Play-Based Learning:</b> In early childhood education,
+                Finland emphasizes play-based learning, which allows children to
+                explore and learn through interactive activities and hands-on
+                experiences.
+              </p>
+              <p>
+                6. <b>Low-Stakes Testing:</b> Finland has minimized the role of
+                standardized testing and instead promotes continuous assessment
+                and feedback. This approach reduces the pressure on students and
+                allows teachers to focus on personalized instruction.
+              </p>
+              <p>
+                7. <b>Supportive Education Policies:</b> Finland's education
+                policies are designed to support students and address their
+                needs effectively. This includes special education services,
+                counseling, and additional resources for students who require
+                extra support.
+              </p>
+              <p>
+                <b>NOTE:</b> It's important to note that while Finland's
+                education system has been successful, each country has its own
+                unique challenges and contexts that may affect literacy rates.
+                Different countries can learn from Finland's example, but it's
+                crucial to consider local circumstances when implementing
+                educational reforms.
+              </p>
+            </ul>
+          </div>
 
-                <div>
-                <center>
-                    <h2>What is the most literate Country in the world and what has it done to achieve this?</h2>
-                </center>
-                    <ul>
-                        <li>
-                            As of 2021, <b>Finland</b> is the most literate Country in the world.
-                        </li>
-                        <p>
-                            Finland has been recognized as having high literacy rates due to several factors and initiatives that contribute to its
-                            strong educational system. While there isn't a single formula for success, here are some key factors that have
-                            contributed to Finland's high literacy rates:
-                        </p>
-                        <p>
-                            1. <b>Emphasis on Education:</b> Education is highly valued in Finnish society, and there is a cultural emphasis on the importance
-                            of learning and education from an early age.
-                        </p>
-                        <p>
-                            2. <b>Comprehensive Education System:</b> Finland has a well-developed and comprehensive education system that focuses on
-                            providing equal opportunities for all students. It includes a strong emphasis on early childhood education, followed by
-                            a nine-year comprehensive basic education program and further options for secondary education.
-                        </p>
-                        <p>
-                            3. <b>High-Quality Teachers:</b> Finnish teachers undergo rigorous training and are highly respected professionals. They are
-                            required to have a master's degree in education, and the teaching profession is highly competitive. This ensures that
-                            high-quality educators are in the classrooms.
-                        </p>
-                        <p>
-                            4. <b>Holistic Approach:</b> The Finnish education system takes a holistic approach, focusing not just on academic achievement but
-                            also on the overall well-being of students. There is an emphasis on individualized learning, student welfare, and
-                            promoting a positive school environment.
-                        </p>
-                        <p>
-                            5. <b>Play-Based Learning:</b> In early childhood education, Finland emphasizes play-based learning, which allows children to
-                            explore and learn through interactive activities and hands-on experiences.
-                        </p>
-                        <p>
-                            6. <b>Low-Stakes Testing:</b> Finland has minimized the role of standardized testing and instead promotes continuous assessment
-                            and feedback. This approach reduces the pressure on students and allows teachers to focus on personalized instruction.
-                        </p>
-                        <p>
-                            7. <b>Supportive Education Policies:</b> Finland's education policies are designed to support students and address their needs
-                            effectively. This includes special education services, counseling, and additional resources for students who require
-                            extra support.
-                        </p>
-                        <p>
-                            <b>NOTE:</b> It's important to note that while Finland's education system has been successful, each country has its own unique
-                            challenges and contexts that may affect literacy rates. Different countries can learn from Finland's example, but it's
-                            crucial to consider local circumstances when implementing educational reforms.
-                        </p>
-                    </ul>
-                </div>
+          <br /><br /><br />
 
-                <br><br><br>
+          <div>
+            <center>
+              <h2>Could these factors be applied in other Countries?</h2>
+            </center>
+            <ul>
+              <p>
+                If a country has low literacy rates, implementing key factors
+                from successful education systems like Finland can certainly
+                help improve literacy levels. However, it's important to
+                consider the specific circumstances and challenges faced by the
+                country in question. Here are some general strategies that could
+                be beneficial:
+              </p>
+              <p>
+                1. <b>Emphasizing Education:</b> Placing a high value on
+                education and raising awareness about its importance can help
+                shift societal attitudes towards education and promote literacy.
+              </p>
+              <p>
+                2. <b>Investing in Education:</b> Governments and relevant
+                stakeholders need to allocate sufficient resources to education,
+                including funding for infrastructure, teacher training, learning
+                materials, and educational programs.
+              </p>
+              <p>
+                3.
+                <b>Teacher Training and Professional Development:</b> Ensuring
+                that teachers receive proper training and ongoing professional
+                development opportunities can significantly impact the quality
+                of education. Well-trained teachers can employ effective
+                teaching methodologies and adapt to the needs of their students.
+              </p>
+              <p>
+                4. <b>Early Childhood Education:</b> Providing access to quality
+                early childhood education can have long-lasting effects on
+                literacy and cognitive development. Offering play-based learning
+                and age-appropriate activities can lay a strong foundation for
+                future learning.
+              </p>
+              <p>
+                5. <b>Customized Learning Approaches:</b> Recognizing that each
+                student has different learning needs and abilities and tailoring
+                instruction accordingly can foster better engagement and
+                understanding. Personalized learning approaches can help address
+                learning gaps and support struggling students.
+              </p>
+              <p>
+                6. <b>Curriculum and Pedagogical Reforms:</b> Regularly
+                evaluating and updating the curriculum to align with current
+                needs and educational trends can enhance the quality of
+                education. Utilizing innovative teaching methods and technology
+                can also make learning more engaging.
+              </p>
+              <p>
+                7. <b>Community Involvement and Support:</b> Engaging parents,
+                communities, and relevant stakeholders in the education process
+                can create a supportive environment for students. This
+                involvement can include parental education, community libraries,
+                and mentorship programs.
+              </p>
+            </ul>
+          </div>
 
-                <div>
-                    <center>
-                        <h2>Could these factors be applied in other Countries?</h2>
-                    </center>
-                    <ul>
-                        <p>
-                            If a country has low literacy rates, implementing key factors from successful education systems like Finland can
-                            certainly help improve literacy levels. However, it's important to consider the specific circumstances and challenges
-                            faced by the country in question. Here are some general strategies that could be beneficial:
-                        </p>
-                        <p>
-                            1. <b>Emphasizing Education:</b> Placing a high value on education and raising awareness about its importance can help shift
-                            societal attitudes towards education and promote literacy.
-                        </p>
-                        <p>
-                            2. <b>Investing in Education:</b> Governments and relevant stakeholders need to allocate sufficient resources to education,
-                            including funding for infrastructure, teacher training, learning materials, and educational programs.
-                        </p>
-                        <p>
-                            3. <b>Teacher Training and Professional Development:</b> Ensuring that teachers receive proper training and ongoing professional
-                            development opportunities can significantly impact the quality of education. Well-trained teachers can employ effective
-                            teaching methodologies and adapt to the needs of their students.
-                        </p>
-                        <p>
-                            4. <b>Early Childhood Education:</b> Providing access to quality early childhood education can have long-lasting effects on
-                            literacy and cognitive development. Offering play-based learning and age-appropriate activities can lay a strong
-                            foundation for future learning.
-                        </p>
-                        <p>
-                            5. <b>Customized Learning Approaches:</b> Recognizing that each student has different learning needs and abilities and tailoring
-                            instruction accordingly can foster better engagement and understanding. Personalized learning approaches can help
-                            address learning gaps and support struggling students.
-                        </p>
-                        <p>
-                            6. <b>Curriculum and Pedagogical Reforms:</b> Regularly evaluating and updating the curriculum to align with current needs and
-                            educational trends can enhance the quality of education. Utilizing innovative teaching methods and technology can also
-                            make learning more engaging.
-                        </p>
-                        <p>
-                            7. <b>Community Involvement and Support:</b> Engaging parents, communities, and relevant stakeholders in the education process can
-                            create a supportive environment for students. This involvement can include parental education, community libraries, and
-                            mentorship programs.
-                        </p>
-                    </ul>
-                </div>
+          <br /><br /><br /><br />
 
-                <br><br><br><br>
-
-                <div>
-                <center>
-                    <h2 style="position: relative; top: 5px;">General Solutions to Lack of Education</h2>
-                </center>
-                    <ul>
-                        <li>
-                            <p>
-                                <b>Increase funding for education:</b> Allocate more resources to education, including teacher training, infrastructure
-                                development, and the provision of necessary learning materials.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <b>Improve access to education:</b> Establish schools in underserved areas, particularly rural and remote regions, and provide
-                                transportation facilities to ensure children can attend school regularly.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <b>Enhance teacher training:</b> Invest in professional development programs to improve the quality of teaching and
-                                instructional methodologies. Provide ongoing training opportunities for teachers to stay updated with the latest
-                                educational practices.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <b>Promote inclusive education:</b> Implement policies that encourage the enrollment of marginalized and disadvantaged groups,
-                                such as girls, children with disabilities, and ethnic minorities. Provide scholarships or financial incentives to make
-                                education more accessible.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <b>Expand early childhood education:</b> Focus on early childhood development by establishing more pre-schools and early
-                                education centers. This helps in laying a strong foundation for future learning.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <b>Implement technology in education:</b> Utilize technology to enhance learning experiences, such as providing e-learning
-                                platforms, online resources, and digital classrooms. This can help overcome barriers of distance and infrastructure.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <b>Strengthen community involvement:</b> Engage parents, local communities, and stakeholders in the education system. Encourage
-                                their active participation in decision-making processes, school management, and support mechanisms for students.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <b>Provide vocational and skill-based training:</b> Offer a range of vocational courses and skill development programs to
-                                prepare students for employment opportunities and entrepreneurship.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <b>Address gender disparities:</b> Promote gender equality in education by removing barriers that prevent girls from attending
-                                school, such as cultural norms, early marriage, and lack of sanitation facilities.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <b>Improve education governance and policies:</b> Ensure transparent and efficient management of education systems through
-                                effective policies, monitoring, and evaluation mechanisms. Foster collaboration between government, non-governmental
-                                organizations, and private sectors to work towards common goals.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <b>Focus on lifelong learning:</b> Emphasize the importance of continuous learning beyond formal education, providing
-                                opportunities for adults to acquire new skills and knowledge throughout their lives.
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <center><h2>Blog Posts</h2></center>
-            <section id="blogs">
-            <div class="blog-section">
-                <div class="blog-post">
-                    <h3>Title of Blog Post 1</h3>
-                    <p>Literacy goes far beyond the ability to read a book or write a letter. Illiteracy can cause immeasurable damage to an
-                    individual’s emotional and intellectual development, and often limits a person’s ability to achieve a fulfilling and
-                    successful adult life.</p>
-                    <a href="https://online.regiscollege.edu/blog/child-illiteracy/">Read More</a>
-                </div>
-            
-                <div class="blog-post">
-                    <h3>Title of Blog Post 2</h3>
-                    <p>The issues surrounding Native American education are rooted in a history of upheaval, beginning with the government
-                    relocation of Native children from their families and tribal way of life to long-term boarding schools.</p>
-                    <a href="https://blog.nativehope.org/the-issues-surrounding-native-american-education">Read More</a>
-                </div>
-                <center>
-                <div class="blog-post">
-                    <h3 style="text-align: left;">Title of Blog Post 3</h3>
-                    <p>Education is vital. We can all agree on this but where we fall out of the agreement is why exactly education is so
-                    necessary for equality. Without education, there can be no progress, no development, and no improvement.</p>
-                    <a href="https://mahb.stanford.edu/blog/why-is-education-so-important-in-the-quest-for-equality/">Read More</a>
-                </div>
-                </center>
-            </div>
-            </section>
-            <br><br><br><br><br><br><br><br><br>
-
-            <!-- footer -->     
-            <section id="footer" style="background-color: #f9f9f9;">
-                <div class="title-text">
-                    <center><h1 class="contact-heading">Contact Us</h1></center>
-                    <center><h2>Visit Us</h2></center>
-                </div>
-                <section id="contact">
-                <div class="footer-row">
-                    <div class="footer-left">
-                        <h1>Opening Hours</h1>
-                        <p><i class="fas fa-clock"></i> Monday to Friday: 9am to 9pm</p>
-                        <p><i class="fas fa-clock"></i> Saturday and Sunday: 9am to 11pm</p>
-                    </div>
-                    <div class="footer-right">
-                        <h1>Get In Touch</h1>
-                        <p><i class="fas fa-map-marker"></i> #69 ABC Colony, Professional City</p>
-                        <p><i class="fas fa-paper-plane"></i> 123@website.com</p>
-                        <p><i class="fas fa-phone"></i> 123456789</p>
-                    </div>
-                </div>
-                </section>
-            </section>     
-
-            <script>
-                function toggleVisibility() {
-                        var textList = document.getElementById("textList");
-                        var readMoreBtn = document.getElementById("readMoreBtn");
-                        var collapseBtn = document.getElementById("collapseBtn");
-
-                        textList.style.display = "block";
-                        readMoreBtn.style.display = "none";
-                        collapseBtn.style.display = "inline-block";
-                        readMoreBtn.classList.add("clicked");
-
-                        // Start observing when "Read more" is clicked
-                        var observer = new IntersectionObserver(function (entries, observer) {
-                            entries.forEach(function (entry) {
-                                if (entry.isIntersecting) {
-                                    entry.target.style.opacity = "1";
-                                }
-                            });
-                        });
-
-                        var images = textList.getElementsByTagName("img");
-                        var paragraphs = textList.getElementsByTagName("p");
-
-                        // Observe each image and paragraph
-                        for (var i = 0; i < images.length; i++) {
-                            observer.observe(images[i]);
-                        }
-
-                        for (var j = 0; j < paragraphs.length; j++) {
-                            observer.observe(paragraphs[j]);
-                        }
-                    }
-
-                    function collapseText() {
-                        var textList = document.getElementById("textList");
-                        var readMoreBtn = document.getElementById("readMoreBtn");
-                        var collapseBtn = document.getElementById("collapseBtn");
-
-                        textList.style.display = "none";
-                        readMoreBtn.style.display = "inline-block";
-                        collapseBtn.style.display = "none";
-                        readMoreBtn.classList.remove("clicked");
-                    }
-
-                    function buttonHover(button) {
-                        button.style.opacity = "0.8";
-                    }
-
-                    function buttonUnhover(button) {
-                        button.style.opacity = "1";
-                    }
-            </script>
-
+          <div>
+            <center>
+              <h2 style="position: relative; top: 5px">
+                General Solutions to Lack of Education
+              </h2>
+            </center>
+            <ul>
+              <li>
+                <p>
+                  <b>Increase funding for education:</b> Allocate more resources
+                  to education, including teacher training, infrastructure
+                  development, and the provision of necessary learning
+                  materials.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <b>Improve access to education:</b> Establish schools in
+                  underserved areas, particularly rural and remote regions, and
+                  provide transportation facilities to ensure children can
+                  attend school regularly.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <b>Enhance teacher training:</b> Invest in professional
+                  development programs to improve the quality of teaching and
+                  instructional methodologies. Provide ongoing training
+                  opportunities for teachers to stay updated with the latest
+                  educational practices.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <b>Promote inclusive education:</b> Implement policies that
+                  encourage the enrollment of marginalized and disadvantaged
+                  groups, such as girls, children with disabilities, and ethnic
+                  minorities. Provide scholarships or financial incentives to
+                  make education more accessible.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <b>Expand early childhood education:</b> Focus on early
+                  childhood development by establishing more pre-schools and
+                  early education centers. This helps in laying a strong
+                  foundation for future learning.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <b>Implement technology in education:</b> Utilize technology
+                  to enhance learning experiences, such as providing e-learning
+                  platforms, online resources, and digital classrooms. This can
+                  help overcome barriers of distance and infrastructure.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <b>Strengthen community involvement:</b> Engage parents, local
+                  communities, and stakeholders in the education system.
+                  Encourage their active participation in decision-making
+                  processes, school management, and support mechanisms for
+                  students.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <b>Provide vocational and skill-based training:</b> Offer a
+                  range of vocational courses and skill development programs to
+                  prepare students for employment opportunities and
+                  entrepreneurship.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <b>Address gender disparities:</b> Promote gender equality in
+                  education by removing barriers that prevent girls from
+                  attending school, such as cultural norms, early marriage, and
+                  lack of sanitation facilities.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <b>Improve education governance and policies:</b> Ensure
+                  transparent and efficient management of education systems
+                  through effective policies, monitoring, and evaluation
+                  mechanisms. Foster collaboration between government,
+                  non-governmental organizations, and private sectors to work
+                  towards common goals.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <b>Focus on lifelong learning:</b> Emphasize the importance of
+                  continuous learning beyond formal education, providing
+                  opportunities for adults to acquire new skills and knowledge
+                  throughout their lives.
+                </p>
+              </li>
+            </ul>
+          </div>
         </div>
+
+        <center><h2>Blog Posts</h2></center>
+        <section id="blogs">
+          <div class="blog-section">
+            <div class="blog-post">
+              <h3>Title of Blog Post 1</h3>
+              <p>
+                Literacy goes far beyond the ability to read a book or write a
+                letter. Illiteracy can cause immeasurable damage to an
+                individual’s emotional and intellectual development, and often
+                limits a person’s ability to achieve a fulfilling and successful
+                adult life.
+              </p>
+              <a href="https://online.regiscollege.edu/blog/child-illiteracy/"
+                >Read More</a
+              >
+            </div>
+
+            <div class="blog-post">
+              <h3>Title of Blog Post 2</h3>
+              <p>
+                The issues surrounding Native American education are rooted in a
+                history of upheaval, beginning with the government relocation of
+                Native children from their families and tribal way of life to
+                long-term boarding schools.
+              </p>
+              <a
+                href="https://blog.nativehope.org/the-issues-surrounding-native-american-education"
+                >Read More</a
+              >
+            </div>
+            <center>
+              <div class="blog-post">
+                <h3 style="text-align: left">Title of Blog Post 3</h3>
+                <p>
+                  Education is vital. We can all agree on this but where we fall
+                  out of the agreement is why exactly education is so necessary
+                  for equality. Without education, there can be no progress, no
+                  development, and no improvement.
+                </p>
+                <a
+                  href="https://mahb.stanford.edu/blog/why-is-education-so-important-in-the-quest-for-equality/"
+                  >Read More</a
+                >
+              </div>
+            </center>
+          </div>
+        </section>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+        <!-- footer -->
+        <section id="footer" style="background-color: #f9f9f9">
+          <div class="title-text">
+            <center><h1 class="contact-heading">Contact Us</h1></center>
+            <center><h2>Visit Us</h2></center>
+          </div>
+          <section id="contact">
+            <div class="footer-row">
+              <div class="footer-left">
+                <h1>Opening Hours</h1>
+                <p><i class="fas fa-clock"></i> Monday to Friday: 9am to 9pm</p>
+                <p>
+                  <i class="fas fa-clock"></i> Saturday and Sunday: 9am to 11pm
+                </p>
+              </div>
+              <div class="footer-right">
+                <h1>Get In Touch</h1>
+                <p>
+                  <i class="fas fa-map-marker"></i> #69 ABC Colony, Professional
+                  City
+                </p>
+                <p><i class="fas fa-paper-plane"></i> 123@website.com</p>
+                <p><i class="fas fa-phone"></i> 123456789</p>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <script>
+          function toggleVisibility() {
+            var textList = document.getElementById("textList");
+            var readMoreBtn = document.getElementById("readMoreBtn");
+            var collapseBtn = document.getElementById("collapseBtn");
+
+            textList.style.display = "block";
+            readMoreBtn.style.display = "none";
+            collapseBtn.style.display = "inline-block";
+            readMoreBtn.classList.add("clicked");
+
+            // Start observing when "Read more" is clicked
+            var observer = new IntersectionObserver(function (
+              entries,
+              observer
+            ) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.style.opacity = "1";
+                }
+              });
+            });
+
+            var images = textList.getElementsByTagName("img");
+            var paragraphs = textList.getElementsByTagName("p");
+
+            // Observe each image and paragraph
+            for (var i = 0; i < images.length; i++) {
+              observer.observe(images[i]);
+            }
+
+            for (var j = 0; j < paragraphs.length; j++) {
+              observer.observe(paragraphs[j]);
+            }
+          }
+
+          function collapseText() {
+            var textList = document.getElementById("textList");
+            var readMoreBtn = document.getElementById("readMoreBtn");
+            var collapseBtn = document.getElementById("collapseBtn");
+
+            textList.style.display = "none";
+            readMoreBtn.style.display = "inline-block";
+            collapseBtn.style.display = "none";
+            readMoreBtn.classList.remove("clicked");
+          }
+
+          function buttonHover(button) {
+            button.style.opacity = "0.8";
+          }
+
+          function buttonUnhover(button) {
+            button.style.opacity = "1";
+          }
+        </script>
+      </div>
     </div>
 
     <script>
-        function showContent(){
-            var exploreBtn = document.getElementById("exploreBtn");
-            var contentContainer = document.getElementById("contentContainer");
+      function showContent() {
+        var exploreBtn = document.getElementById("exploreBtn");
+        var contentContainer = document.getElementById("contentContainer");
 
-            exploreBtn.style.display = "none";
-            contentContainer.style.display = "block";
-        }
+        exploreBtn.style.display = "none";
+        contentContainer.style.display = "block";
+      }
     </script>
 
     <script>
-        // Get all the anchor links inside the <li> tags
-        const menuLinks = document.querySelectorAll('nav ul li a');
-
-        // Attach click event listeners to each link
-        menuLinks.forEach(link => {
-            link.addEventListener('click', (event) => {
-                // Check if the link points to an external URL
-                const href = link.getAttribute('href');
-                if (href.startsWith('http://') || href.startsWith('https://')) {
-                    // The link is an external URL, redirect the user
-                    return;
-                }
-
-                event.preventDefault(); // Prevent the default link behavior
-
-                // Get the href attribute of the clicked link
-                const targetId = link.getAttribute('href');
-
-                // Scroll to the target section smoothly
-                document.querySelector(targetId).scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            });
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
         });
+      }
+
+      const homeLink = document.querySelector("nav ul li a[href='#top']");
+      homeLink.addEventListener("click", (event) => {
+        event.preventDefault();
+        scrollToTop();
+      });
     </script>
 
     <script>
-        const aboutUsLink = document.getElementById('aboutUsLink');
+      // Get all the anchor links inside the <li> tags
+      const menuLinks = document.querySelectorAll("nav ul li a");
 
-        aboutUsLink.addEventListener('click', (event) => {
-            event.preventDefault(); // Prevent the default link behavior
+      // Attach click event listeners to each link
+      menuLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          // Check if the link points to an external URL
+          const href = link.getAttribute("href");
+          if (href.startsWith("http://") || href.startsWith("https://")) {
+            // The link is an external URL, redirect the user
+            return;
+          }
 
-            const aboutUsURL = aboutUsLink.getAttribute('href');
-            window.location.href = aboutUsURL;
+          event.preventDefault(); // Prevent the default link behavior
+
+          // Get the href attribute of the clicked link
+          const targetId = link.getAttribute("href");
+
+          // Scroll to the target section smoothly
+          document.querySelector(targetId).scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
         });
+      });
     </script>
 
-</body>
+    <script>
+      const aboutUsLink = document.getElementById("aboutUsLink");
 
+      aboutUsLink.addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent the default link behavior
+
+        const aboutUsURL = aboutUsLink.getAttribute("href");
+        window.location.href = aboutUsURL;
+      });
+    </script>
+  </body>
 </html>
